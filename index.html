@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Serenity Oasis</title>
+<style>
+body {
+  background: linear-gradient(to bottom, #ff99cc, #ffcc99, #ffff99, #ccffcc);
+  background-size: 800% 800%;
+  animation: move 10s ease infinite;
+}
+.container {
+max-width: 800px;
+margin: 40px auto;
+text-align: center;
+}
+.bg-image {
+background-image: url("beach.jpg");
+height: 100vh;
+background-size: cover;
+position: fixed;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+z-index: -1;
+}
+.wave-animation {
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 100px;
+background-image: url("wave.gif");
+background-size: cover;
+}
+.calming-text {
+font-size: 36px;
+color: #395778;
+margin-bottom: 20px;
+}
+.quote {
+font-size: 24px;
+color: #666;
+margin-bottom: 40px;
+}
+.button {
+background-color: #4CAF50;
+color: #fff;
+border: none;
+padding: 10px 20px;
+font-size: 18px;
+cursor: pointer;
+}
+.button:hover {
+background-color: #3e8e41;
+}
+.breathing-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 10px solid #4CAF50;
+  margin: 20px auto;
+}
+
+@keyframes breatheIn {
+  0% { transform: scale(0.5); }
+  100% { transform: scale(1); }
+}
+
+@keyframes breatheOut {
+  0% { transform: scale(1); }
+  100% { transform: scale(0.5); }
+}
+@keyframes move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  background: linear-gradient(to bottom, #87CEEB, #4682B4);
+  font-family: Arial;
+}
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  text-align: center;
+}
+.flowers {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+}
+
+.flower {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #FFC0CB;
+  border-radius: 50%;
+}
+
+.flower::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #FF69B4;
+  border-radius: 50%;
+}
+
+.flower1 {
+  bottom: 150px;
+  left: 100px;
+}
+
+.flower2 {
+  bottom: 100px;
+  left: 300px;
+}
+
+.flower3 {
+  bottom: 50px;
+  left: 500px;
+}
+.wildflowers-container {
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+}
+.row {
+display: flex;
+justify-content: space-between;
+}
+.wildflowers {
+font-size: 50px;
+animation: float 2s ease-in-out infinite alternate;
+}
+@keyframes float {
+0% { transform: translateY(0px); }
+100% { transform: translateY(20px); }
+}
+
+
+</style>
+</head>
+<body>
+<div class="bg-image"></div>
+<div class="wave-animation"></div>
+<div class="container">
+<h1 class="calming-text">Find Serenity</h1>
+<p class="quote">"Nature is not a place to visit. It is home."</p>
+
+
+
+<button class="button" onclick="startBreathing()">Breathe with Me</button>
+<div class="wildflowers-container">
+  <div class="row">
+  <div class="wildflowers" style="animation-delay: 0s;">🌼</div>
+  <div class="wildflowers" style="animation-delay: 0.5s;">🌼</div>
+  <div class="wildflowers" style="animation-delay: 1s;">🌼</div>
+  <div class="wildflowers" style="animation-delay: 1.5s;">🌼</div>
+  </div>
+  <div class="row" style="margin-top: 50px;">
+  <div class="wildflowers" style="animation-delay: 0s;">🌼</div>
+  <div class="wildflowers" style="animation-delay: 0.5s;">🌼</div>
+  <div class="wildflowers" style="animation-delay: 1s;">🌼</div>
+  <div class="wildflowers" style="animation-delay: 1.5s;">🌼</div>
+  </div>
+  </div>
+<div class="breathing-guide" style="display:none;">
+  <p id="breathe-text">Breathe In...</p>
+  <div class="breathing-circle"></div>
+</div>
+
+</body>
+</html>
+<script>
+function startBreathing() {
+  document.querySelector('.breathing-guide').style.display = 'block';
+  breatheIn();
+}
+
+let breatheState = 'in';
+function breatheIn() {
+  document.getElementById('breathe-text').innerText = 'Breathe In...';
+  document.querySelector('.breathing-circle').style.animation = 'breatheIn 4s ease-in-out forwards';
+  breatheState = 'in';
+  setTimeout(breatheOut, 4000);
+}
+
+function breatheOut() {
+  document.getElementById('breathe-text').innerText = 'Breathe Out...';
+  document.querySelector('.breathing-circle').style.animation = 'breatheOut 4s ease-in-out forwards';
+  breatheState = 'out';
+  setTimeout(breatheIn, 4000);
+}
+
+</script>
